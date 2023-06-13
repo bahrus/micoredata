@@ -9,7 +9,7 @@ namespace micoredata
     public class ItempropAttributeTagHelper : TagHelper
     {
         [HtmlAttributeName("itemprop")]
-        public ModelExpression PropertyName { get; set; }
+        public ModelExpression? PropertyName { get; set; }
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             var itemProp = context.AllAttributes["itemprop"];
