@@ -13,10 +13,16 @@ namespace micoredata
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             var itemProp = context.AllAttributes["itemprop"];
-            var val = itemProp.Value as ModelExpression;
-            if (val == null) return;
-            output.Content.SetHtmlContent(val.Model.ToString());
-            output.Attributes.SetAttribute("itemprop", val.Name);
+            var modelExpression = itemProp.Value as ModelExpression;
+            if (modelExpression == null || modelExpression.Model == null) return;
+            output.Attributes.SetAttribute("itemprop", modelExpression.Name);
+            var val = modelExpression.Model as string;
+            if (val != null)
+            {
+                output.Content.SetHtmlContent(modelExpression.Model.ToString());
+
+            }
+
 
         }
     }
