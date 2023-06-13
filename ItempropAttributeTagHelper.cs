@@ -24,6 +24,10 @@ namespace micoredata
                 output.Content.SetHtmlContent(modelExpression.Model.ToString());
 
             }
+            else
+            {
+                output.Attributes.SetAttribute("itemscope", "");
+            }
 
 
         }
