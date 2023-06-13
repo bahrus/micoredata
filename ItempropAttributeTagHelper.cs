@@ -15,7 +15,9 @@ namespace micoredata
             var itemProp = context.AllAttributes["itemprop"];
             var modelExpression = itemProp.Value as ModelExpression;
             if (modelExpression == null || modelExpression.Model == null) return;
-            output.Attributes.SetAttribute("itemprop", modelExpression.Name);
+            var name = modelExpression.Name;
+            var split = name.Split('.');
+            output.Attributes.SetAttribute("itemprop", split.Last());
             var val = modelExpression.Model as string;
             if (val != null)
             {
